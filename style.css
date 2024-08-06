@@ -1,0 +1,131 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #cfcbcb;
+}
+
+.chat-container {
+    width: 600px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.chat-box {
+    height: 300px;
+    padding: 10px;
+    overflow-y: auto;
+    border-bottom: 1px solid #7e7e7e;
+    border-top: 1px solid #7e7e7e;
+    background-color: #a5a7aa;
+}
+
+.chat-box .message {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 4px;
+    animation: slideIn 1.3s forwards;
+    max-width: 100%;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.chat-box .user-message {
+    background: #d2d3d2;
+    text-align: right;
+    font-family: "Consolas";
+}
+
+.chat-box .bot-message {
+    background: #f1f1f1;
+    font-family: "Consolas";
+}
+
+input[type="text"] {
+    width: 80%;
+    padding: 17px;
+    border: none;
+    border-radius: 0 8px 0 8px;
+    margin: 45px;
+    background-color: #ccc;
+    font-size: 17px;
+    font-family: "Consolas";
+}
+
+input[type="text"]:hover {
+    background-color: #b2b2b4;
+    color: #000;
+}
+
+button {
+    width: 90%;
+    padding: 20px;
+    margin: 30px;
+    border: none;
+    background: #8f9194;
+    color: #000;
+    cursor: pointer;
+    border-radius: 8px 0 8px 0;
+    font-family: "Consolas";
+    font-size: 20px;
+}
+
+button:hover {
+    background: #2f2f30;
+    color: #fff;
+}
+
+.chat-title {
+    display: none;
+    text-align: center;
+    font-size: 34px;
+    font-family: "Consolas";
+    color: #000000;
+    opacity: 0;
+    animation: fadeIn 3.9s forwards;
+    background-image: linear-gradient(90deg, white, rgb(158, 157, 157));
+}
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.waiting-message {
+    font-style: italic;
+}
+@keyframes dots {
+    0%, 20% {
+        content: "";
+    }
+    40% {
+        content: ".";
+    }
+    60% {
+        content: "..";
+    }
+    80%, 100% {
+        content: "...";
+    }
+}
+.dots::after {
+    content: "";
+    animation: dots 1.5s steps(4, end) infinite;
+}
