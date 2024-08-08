@@ -6,15 +6,66 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #cfcbcb;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-mode {
+    background-color: #2f2f2f;
+}
+
+.login {
+    position: absolute;
+    top: 50px;
+    right: 1170px;
+    width: 440px;
+    height: 650px;
+    background-color: #777979;
+    border-radius: 2pc;
+    background: linear-gradient(120deg, transparent, #777979, #4c4d4d);
+    mask-image: radial-gradient(circle rgba(0,0,0,1) 100%, rgba(0,0,0,0) 67%);
+    transition: background-color 0.3s ease;
+}
+
+body.dark-mode .login {
+    background: linear-gradient(120deg, transparent, #4c4d4d, #2f2f2f);
+}
+
+.ajustamento-paragrafo {
+    position: absolute;
+    width: 300px;
+    right: 50px;
+    text-align: left;
+    color:#2f2f30;
+    font-family: "Consolas";
+    font-size: 23px;
+}
+
+body.dark-mode .ajustamento-paragrafo {
+    color: #b2b2b2;
+}
+
+.paragrafo {
+    text-align: center;
+    color:#2f2f30;
+    font-family: "Consolas";
 }
 
 .chat-container {
+    position: relative;
     width: 600px;
     background: #fff;
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    background: linear-gradient(190deg, transparent, #fff, rgb(189, 184, 184));
+    mask-image: linear-gradient(linear rgba(0,0,0,1) 100%, rgba(0,0,0,0) 67%);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-mode .chat-container {
+    background: linear-gradient(190deg, transparent, #3f3f3f, #2f2f2f);
+    border-color: #555;
 }
 
 .chat-box {
@@ -22,29 +73,23 @@ body {
     padding: 10px;
     overflow-y: auto;
     border-bottom: 1px solid #7e7e7e;
-    border-top: 1px solid #7e7e7e;
-    background-color: #a5a7aa;
+    background-image: linear-gradient(#a5a7aa, #7a7a7a);
+    transition: background-image 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-mode .chat-box {
+    background-image: linear-gradient(#4c4d4d, #2f2f2f);
+    border-color: #555;
 }
 
 .chat-box .message {
-    margin-bottom: 10px;
-    padding: 8px;
+    margin-bottom: 8px;
+    padding: 13px;
     border-radius: 4px;
     animation: slideIn 1.3s forwards;
     max-width: 100%;
     word-wrap: break-word;
     white-space: pre-wrap;
-}
-
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 .chat-box .user-message {
@@ -53,9 +98,18 @@ body {
     font-family: "Consolas";
 }
 
+body.dark-mode .chat-box .user-message {
+    background: #7d7e7e;
+}
+
 .chat-box .bot-message {
     background: #f1f1f1;
     font-family: "Consolas";
+}
+
+body.dark-mode .chat-box .bot-message {
+    background: #5a5959;
+    color: #fff;
 }
 
 input[type="text"] {
@@ -67,11 +121,23 @@ input[type="text"] {
     background-color: #ccc;
     font-size: 17px;
     font-family: "Consolas";
+    transition: background-color 0.3s ease;
 }
 
-input[type="text"]:hover {
-    background-color: #b2b2b4;
+body.dark-mode input[type="text"] {
+    background-color: #555;
+    color: #000000;
+}
+
+input[type="text"]:focus {
     color: #000;
+    animation: chat 1s forwards;
+}
+
+@keyframes chat {
+    to {
+        background-color: #b2b2b4;
+    }
 }
 
 button {
@@ -85,11 +151,22 @@ button {
     border-radius: 8px 0 8px 0;
     font-family: "Consolas";
     font-size: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode button {
+    background: #555;
+    color: #ddd;
 }
 
 button:hover {
-    background: #2f2f30;
+    background-image: linear-gradient(25deg, #2f2f30, grey);
     color: #fff;
+}
+
+body.dark-mode button:hover {
+    background-image: linear-gradient(25deg, #58585a, rgb(161, 159, 159));
+    color: #000000;
 }
 
 .chat-title {
@@ -102,7 +179,50 @@ button:hover {
     animation: fadeIn 3.9s forwards;
     background-image: linear-gradient(90deg, white, rgb(158, 157, 157));
 }
+
+body.dark-mode .chat-title {
+    color: #000000;
+}
+
 @keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.logo-container {
+    text-align: center;
+    color: #777979;
+    font-family: "Consolas";
+    position: absolute;
+    top: 300px;
+    right: 90px;
+    width: 300px;
+    height: 300px;
+    background-color: #dadee4;
+    border-radius: 2pc;
+    background: linear-gradient(45deg, transparent, #fff);
+    mask-image: radial-gradient(circle rgba(0,0,0,1) 100%, rgba(0,0,0,0) 67%);
+    transition: background-color 0.3s ease;
+}
+
+body.dark-mode .logo-container {
+    background-color: #3f3f3f;
+}
+
+.logo {
+    text-align: center;
+    display: none;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(45deg, transparent, #fff);
+    mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 67%);
+    animation: logo 3.9s forwards;
+    opacity: 0;
+}
+
+@keyframes logo {
     to {
         opacity: 1;
     }
@@ -111,6 +231,11 @@ button:hover {
 .waiting-message {
     font-style: italic;
 }
+
+body.dark-mode .waiting-message {
+    color: #ddd;
+}
+
 @keyframes dots {
     0%, 20% {
         content: "";
@@ -125,7 +250,32 @@ button:hover {
         content: "...";
     }
 }
+
 .dots::after {
     content: "";
     animation: dots 1.5s steps(4, end) infinite;
+}
+
+#dark-mode-toggle {
+    position: absolute;
+    top: 120px;
+    right: 115px;
+    padding: 20px;
+    width: 200px;
+    background-color: #8f9194;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#dark-mode-toggle:hover {
+    background-color: #2f2f30;
+    color: #fff;
+}
+
+body.dark-mode #dark-mode-toggle {
+    background-color: #555;
+    color: #ddd;
 }

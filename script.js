@@ -1,9 +1,12 @@
 const chatBox = document.getElementById('chat-box');
 const userInput = document.getElementById('user-input');
 const chatTitle = document.getElementById('chat-title');
+const logo = document.getElementById('Logo');
+const desco = document.getElementById('desco');
+const darkModeToggle = document.getElementById('dark-mode-toggle');
 
 const botResponses = {
-    //tipo #OLÁS, OIS....#
+    // Respostas definidas
     "oi": "Olá! Como posso ajudar você hoje?",
     "olá": "Olá! Como posso ajudar você hoje?",
     "ola": "Olá! Como posso ajudar você hoje?",
@@ -11,7 +14,6 @@ const botResponses = {
     "eai": "Olá! Como posso ajudar você hoje?",
     "eae": "Olá! Como posso ajudar você hoje?",
 
-    //tipo #INTERAÇÂO#
     "como você está?": "Estou bem, apesar de ser um programa, mas estou funcionando perfeitamente!",
     "como voce esta?": "Estou bem, apesar de ser um programa, mas estou funcionando perfeitamente!",
     "como você está": "Estou bem, apesar de ser um programa, mas estou funcionando perfeitamente!",
@@ -27,7 +29,6 @@ const botResponses = {
     "como está": "Estou bem, apesar de ser um programa, mas estou funcionando perfeitamente!",
     "como esta": "Estou bem, apesar de ser um programa, mas estou funcionando perfeitamente!",
 
-    //tipo #INTERAÇÂO_2#
     "qual é o seu nome?": "Eu sou o GEPETO!",
     "qual e o seu nome?": "Eu sou o GEPETO!",
     "qual é o seu nome": "Eu sou o GEPETO!",
@@ -36,8 +37,15 @@ const botResponses = {
     "qual e o teu nome?": "Eu sou o GEPETO!",
     "qual é o teu nome": "Eu sou o GEPETO!",
     "qual e o teu nome": "Eu sou o GEPETO!",
+    "qual o seu nome": "Eu sou o GEPETO!",
+    "qual o seu nome": "Eu sou o GEPETO!",
+    "qual o teu nome": "Eu sou o GEPETO!",
+    "qual o teu nome": "Eu sou o GEPETO!",
+    "qual o seu nome?": "Eu sou o GEPETO!",
+    "qual o seu nome?": "Eu sou o GEPETO!",
+    "qual o teu nome?": "Eu sou o GEPETO!",
+    "qual o teu nome?": "Eu sou o GEPETO!",
 
-    //tipo #INTERAÇÔES_ADICIONAIS#
     "o que você sabe?": "Eu sei coisas básicas sobre conversação, e sobre o curso de DS (Desenvolvimento de Sistemas). Lembrando, que talvez, algumas perguntas não constam em meu algoritmo!",
     "o que voce sabe?": "Eu sei coisas básicas sobre conversação, e sobre o curso de DS (Desenvolvimento de Sistemas). Lembrando, que talvez, algumas perguntas não constam em meu algoritmo!",
     "oque você sabe?": "Eu sei coisas básicas sobre conversação, e sobre o curso de DS (Desenvolvimento de Sistemas). Lembrando, que talvez, algumas perguntas não constam em meu algoritmo!",
@@ -50,7 +58,7 @@ const botResponses = {
     "oque voce sabe": "Eu sei coisas básicas sobre conversação, e sobre o curso de DS (Desenvolvimento de Sistemas). Lembrando, que talvez, algumas perguntas não constam em meu algoritmo!",
     "o que vc sabe": "Eu sei coisas básicas sobre conversação, e sobre o curso de DS (Desenvolvimento de Sistemas). Lembrando, que talvez, algumas perguntas não constam em meu algoritmo!",
     "oque vc sabe": "Eu sei coisas básicas sobre conversação, e sobre o curso de DS (Desenvolvimento de Sistemas). Lembrando, que talvez, algumas perguntas não constam em meu algoritmo!",
-    //--sobre o curso--//
+
     "o que significa ds?": "A sigla DS significa Desenvolvimento de Sistemas, sobre ele, podemos dizer que é o processo de criar e manter sistemas de software. Isso envolve várias etapas, desde a concepção da ideia até a implementação e manutenção do software.",
     "o que é ds?": "A sigla DS significa Desenvolvimento de Sistemas, sobre ele, podemos dizer que é o processo de criar e manter sistemas de software. Isso envolve várias etapas, desde a concepção da ideia até a implementação e manutenção do software.",
     "o que e ds?": "A sigla DS significa Desenvolvimento de Sistemas, sobre ele, podemos dizer que é o processo de criar e manter sistemas de software. Isso envolve várias etapas, desde a concepção da ideia até a implementação e manutenção do software.",
@@ -64,7 +72,6 @@ const botResponses = {
     "oque acontece no curso": "O curso irá te prover conhecimento sobre as áreas de criação e mantimento de sistemas, onde nós aprenderemos as linguagens de programação existentes, como Pyhton, Java, JavaScript e outras linguagens existentes atualmentes, e também linguagens de marcação, como HTML, e todos eles atualizados com suas versões mais recentes em 2024.",
     "o que acontece no curso": "O curso irá te prover conhecimento sobre as áreas de criação e mantimento de sistemas, onde nós aprenderemos as linguagens de programação existentes, como Pyhton, Java, JavaScript e outras linguagens existentes atualmentes, e também linguagens de marcação, como HTML, e todos eles atualizados com suas versões mais recentes em 2024.",
 
-    //tipo #FINALIZAÇÂO#
     "tchau": "Até mais! Tenha um ótimo dia!",
     "falow": "Até mais! Tenha um ótimo dia!",
     "flw": "Até mais! Tenha um ótimo dia!",
@@ -72,7 +79,6 @@ const botResponses = {
     "ate": "Até mais! Tenha um ótimo dia!",
     "até mais": "Até mais! Tenha um ótimo dia!",
     "ate mais": "Até mais! Tenha um ótimo dia!",
-    
 };
 
 function sendMessage() {
@@ -105,6 +111,8 @@ function getBotResponse(message) {
     const response = botResponses[message] || "Desculpe, não entendi sua pergunta. Reformule-a ou se escreveu em outra língua, por favor, traduza para o Português Brasil.";
     if (response.includes("Eu sou o GEPETO")) {
         chatTitle.style.display = 'block';
+        logo.style.display = 'block';
+        desco.style.display = 'none';
     }
 
     setTimeout(() => {
@@ -119,3 +127,7 @@ function getBotResponse(message) {
         }
     }
 }
+
+darkModeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+});
